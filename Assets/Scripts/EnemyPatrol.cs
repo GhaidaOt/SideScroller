@@ -6,6 +6,8 @@ public class EnemyPatrol : MonoBehaviour
 {
 
     private GameObject player;
+    private bool detected = false;
+    [SerializeField] private float speed;
 
     void Start()
     {
@@ -15,7 +17,21 @@ public class EnemyPatrol : MonoBehaviour
     void Update()
     {
         float playerDistance = Vector3.Distance(player.transform.position, transform.position);
-        Debug.Log("this much: " + playerDistance);
-        
+      //  Debug.Log("this much: " + playerDistance);
+
+        if(playerDistance <= 10 && detected == false)
+        {
+            detected = true;
+        }
+
+        if (detected == true)
+        {
+            if (player.transform.position.x < transform.position.x)
+            {
+                transform.Translate(Vector3.right * -speed * Time.deltaTime);
+            }
+            else
+            { transform.Translate(Vector3.right * speed * Time.deltaTime); }
+        }
     }
 }
