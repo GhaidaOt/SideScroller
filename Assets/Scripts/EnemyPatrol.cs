@@ -27,11 +27,9 @@ public class EnemyPatrol : MonoBehaviour
         if (detected == true)
         {
             if (player.transform.position.x < transform.position.x)
-            {
                 transform.Translate(Vector3.right * -speed * Time.deltaTime);
-            }
             else
-            { transform.Translate(Vector3.right * speed * Time.deltaTime); }
+             transform.Translate(Vector3.right * speed * Time.deltaTime); 
         }
     }
 }
