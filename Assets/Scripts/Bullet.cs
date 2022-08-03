@@ -5,17 +5,27 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField] float bulletSpeed;
+    [SerializeField] float lifeSpan;
     private Rigidbody rb;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.AddForce(Vector3.right * bulletSpeed);
+        Invoke("DeleteBullet",lifeSpan);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnCollisionEnter(Collision collision)
     {
-        
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Destroy(collision.gameObject);
+            Destroy(gameObject);
+        }
+    }
+
+    void DeleteBullet()
+    {
+        Destroy(gameObject);
     }
 }
