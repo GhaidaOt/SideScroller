@@ -32,6 +32,12 @@ public class EnemyAttack : MonoBehaviour
         else
         
             rb.AddForce(Vector3.right * 500);
-        
+
+        Invoke("MoveAgain", 1);
+    }
+
+    void MoveAgain()
+    {
+        script.enabled = true;
     }
 }
