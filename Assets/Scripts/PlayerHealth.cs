@@ -56,6 +56,7 @@ public class PlayerHealth : MonoBehaviour
     void MoveAgain()
     {
         script.enabled = true;
+
     }
 
     void Die()
