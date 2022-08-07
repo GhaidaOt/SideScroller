@@ -5,12 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class LoadNext : MonoBehaviour
 {
+    [SerializeField] string level;
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Working");
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            SceneManager.LoadScene(level);
         }
     }
 }
